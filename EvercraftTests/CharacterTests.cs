@@ -46,9 +46,9 @@ namespace EvercraftTests
 		public void Attack_RollDie()
 		{
 			int n = 15;
-			var mockDie = MockRepository.GenerateStub<IRollDice>();
-			mockDie.Stub(x => x.Roll()).Return(n);
-			Assert.AreEqual(n, _c.Attack(mockDie));
+			var die = MockRepository.GenerateStub<IRollDice>();
+			die.Stub(x => x.Roll()).Return(n);
+			Assert.AreEqual(n, _c.Attack(die));
 		}
 
 	}
