@@ -42,5 +42,14 @@ namespace EvercraftTests
 			Assert.AreEqual(5, _c.HitPoints);
 		}
 
+		[Test()]
+		public void Attack_RollDie()
+		{
+			int n = 15;
+			var mockDie = MockRepository.GenerateStub<IRollDice>();
+			mockDie.Stub(x => x.Roll()).Return(n);
+			Assert.AreEqual(n, _c.Attack(mockDie));
+		}
+
 	}
 }

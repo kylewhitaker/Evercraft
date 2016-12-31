@@ -14,7 +14,12 @@ namespace Evercraft
 			ArmorClass = 10;
 			HitPoints = 5;
 		}
-	}
+
+		public int Attack(IRollDice die)
+		{
+			return die.Roll();
+		}
+}
 
 	public enum Alignment
 	{
