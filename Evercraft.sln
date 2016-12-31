@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evercraft", "Evercraft\Ever
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvercraftTests", "EvercraftTests\EvercraftTests.csproj", "{DA036AB6-7F83-4AD3-9A61-6D52F0E5E6A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79A3F612-440A-481D-9701-C87B0F3BF357}"
+	ProjectSection(SolutionItems) = preProject
+		the-evercraft-kata.pdf = the-evercraft-kata.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
