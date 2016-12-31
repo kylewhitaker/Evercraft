@@ -8,20 +8,26 @@ namespace EvercraftTests
 	[TestFixture()]
 	public class CharacterTests
 	{
+		Character _c;
+
+		[TestFixtureSetUp()]
+		public void Setup()
+		{
+			_c = new Character();
+		}
+
 		[Test()]
 		public void GetSetName()
 		{
-			Character c = new Character();
-			c.Name = "Kyle";
-			Assert.AreEqual("Kyle", c.Name);
+			_c.Name = "Kyle";
+			Assert.AreEqual("Kyle", _c.Name);
 		}
 
 		[Test()]
 		public void GetSetAlignment()
 		{
-			Character c = new Character();
-			c.Alignment = Alignment.Good;
-			Assert.AreEqual(Alignment.Good, c.Alignment);
+			_c.Alignment = Alignment.Good;
+			Assert.AreEqual(Alignment.Good, _c.Alignment);
 		}
 
 	}
