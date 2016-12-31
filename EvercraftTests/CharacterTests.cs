@@ -36,5 +36,11 @@ namespace EvercraftTests
 			Assert.AreEqual(10, _c.ArmorClass);
 		}
 
+		[Test()]
+		public void DefaultHitPoints()
+		{
+			Assert.AreEqual(5, _c.HitPoints);
+		}
+
 	}
 }
