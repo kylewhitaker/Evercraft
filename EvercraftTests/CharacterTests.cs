@@ -30,5 +30,11 @@ namespace EvercraftTests
 			Assert.AreEqual(Alignment.Good, _c.Alignment);
 		}
 
+		[Test()]
+		public void DefaultArmorClass()
+		{
+			Assert.AreEqual(10, _c.ArmorClass);
+		}
+
 	}
 }
