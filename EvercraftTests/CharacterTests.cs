@@ -9,11 +9,20 @@ namespace EvercraftTests
 	public class CharacterTests
 	{
 		[Test()]
-		public void Name()
+		public void GetSetName()
 		{
 			Character c = new Character();
 			c.Name = "Kyle";
 			Assert.AreEqual("Kyle", c.Name);
 		}
+
+		[Test()]
+		public void GetSetAlignment()
+		{
+			Character c = new Character();
+			c.Alignment = Alignment.Good;
+			Assert.AreEqual(Alignment.Good, c.Alignment);
+		}
+
 	}
 }
