@@ -6,8 +6,8 @@ public class ScorekeeperTests
 	Scorekeeper _s;
 	Character _c;
 
-	[TestFixtureSetUp]
-	public void TFSetup()
+	[OneTimeSetUp]
+	public void OneTimeSetup()
 	{
 		_s = new Scorekeeper();
 	}

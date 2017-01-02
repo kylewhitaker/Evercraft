@@ -5,15 +5,15 @@ public class UmpireTests
 {
 	Umpire _u;
 
-	[TestFixtureSetUp]
-	public void TFSetup()
+	[OneTimeSetUp]
+	public void OneTimeSetUp()
 	{
 		_u = new Umpire();
 	}
 
-	[TestCase(15, 10, Result = true)]
-	[TestCase(10, 10, Result = true)]
-	[TestCase(8, 10, Result = false)]
+	[TestCase(15, 10, ExpectedResult = true)]
+	[TestCase(10, 10, ExpectedResult = true)]
+	[TestCase(8, 10, ExpectedResult = false)]
 	public bool AttackIsHit(int r, int ac)
 	{
 		return _u.AttackIsHit(roll: r, armorClass: ac);
