@@ -1,15 +1,20 @@
 public class Abilities
 {
-	public int Strength { get; set; }
-	public int Dexterity { get; set; }
-	public int Constitution { get; set; }
-	public int Wisdom { get; set; }
-	public int Intelligence { get; set; }
 	public int Charisma { get; set; }
+	public int Constitution { get; set; }
+	public int Dexterity { get; set; }
+	public int Intelligence { get; set; }
+	public int Strength { get; set; }
+	public int Wisdom { get; set; }
 
 	public Abilities()
 	{
-		Charisma = 10;
-		Dexterity = 10;
+		const int TEN = 10;
+		Charisma = TEN;
+		Constitution = TEN;
+		Dexterity = TEN;
+		Intelligence = TEN;
+		Strength = TEN;
+		Wisdom = TEN;
 	}
 }

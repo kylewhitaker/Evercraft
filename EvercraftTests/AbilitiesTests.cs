@@ -1,19 +1,26 @@
+using System.Collections;
 using NUnit.Framework;
 
 [TestFixture]
 public class AbilitiesTests
 {
-	[Test]
-	public void DefaultCharisma()
+
+	[TestCaseSource("DefaultAbilityScores")]
+	public void Default(int ability, int score)
 	{
-		Abilities a = new Abilities();
-		Assert.AreEqual(10, a.Charisma);
+		Assert.AreEqual(ability, score);
 	}
 
-	[Test]
-	public void DefaultDexterity()
+	static IEnumerable DefaultAbilityScores
 	{
-		Abilities a = new Abilities();
-		Assert.AreEqual(10, a.Dexterity);
+		get
+		{
+			yield return new TestCaseData(new Abilities().Charisma, 10).SetName("Charisma");
+			yield return new TestCaseData(new Abilities().Constitution, 10).SetName("Constitution");
+			yield return new TestCaseData(new Abilities().Dexterity, 10).SetName("Dexterity");
+			yield return new TestCaseData(new Abilities().Intelligence, 10).SetName("Intelligence");
+			yield return new TestCaseData(new Abilities().Strength, 10).SetName("Strength");
+			yield return new TestCaseData(new Abilities().Wisdom, 10).SetName("Wisdom");
+		}
 	}
 }
