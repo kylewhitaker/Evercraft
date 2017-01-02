@@ -14,22 +14,12 @@ namespace EvercraftTests
 			_u = new Umpire();
 		}
 
-		[Test()]
-		public void AttackIsHit_RollBeatsArmorClass_True()
+		[TestCase(15,10)]
+		[TestCase(10,10)]
+		[TestCase(8,10)]
+		public void AttackIsHit(int r, int ac)
 		{
-			Assert.AreEqual(true, _u.AttackIsHit(roll: 15, armorClass: 10));
-		}
-
-		[Test()]
-		public void AttackIsHit_RollLessThanArmorClass_False()
-		{
-			Assert.AreEqual(false, _u.AttackIsHit(roll: 8, armorClass: 10));
-		}
-
-		[Test()]
-		public void AttackIsHit_RollEqualsArmorClass_True()
-		{
-			Assert.AreEqual(true, _u.AttackIsHit(roll: 10, armorClass: 10));
+			Assert.AreEqual(r >= ac ? true : false, _u.AttackIsHit(roll: r, armorClass: ac));
 		}
 
 	}
