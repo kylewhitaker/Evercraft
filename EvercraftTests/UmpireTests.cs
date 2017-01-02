@@ -6,28 +6,30 @@ namespace EvercraftTests
 	[TestFixture()]
 	public class UmpireTests
 	{
+		Umpire _u;
+
+		[TestFixtureSetUp()]
+		public void Setup()
+		{
+			_u = new Umpire();
+		}
+
 		[Test()]
 		public void AttackIsHit_RollBeatsArmorClass_True()
 		{
-			Umpire u = new Umpire();
-			int roll = 15, armorClass = 10;
-			Assert.AreEqual(true, u.AttackIsHit(roll, armorClass));
+			Assert.AreEqual(true, _u.AttackIsHit(roll: 15, armorClass: 10));
 		}
 
 		[Test()]
 		public void AttackIsHit_RollLessThanArmorClass_False()
 		{
-			Umpire u = new Umpire();
-			int roll = 8, armorClass = 10;
-			Assert.AreEqual(false, u.AttackIsHit(roll, armorClass));
+			Assert.AreEqual(false, _u.AttackIsHit(roll: 8, armorClass: 10));
 		}
 
 		[Test()]
 		public void AttackIsHit_RollEqualsArmorClass_True()
 		{
-			Umpire u = new Umpire();
-			int roll = 10, armorClass = 10;
-			Assert.AreEqual(true, u.AttackIsHit(roll, armorClass));
+			Assert.AreEqual(true, _u.AttackIsHit(roll: 10, armorClass: 10));
 		}
 
 	}
