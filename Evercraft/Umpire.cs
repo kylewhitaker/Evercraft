@@ -6,7 +6,7 @@ namespace Evercraft
 	{
 		public bool AttackIsHit(int roll, int armorClass)
 		{
-			return true;
+			return roll > armorClass;
 		}
 	}
 }
