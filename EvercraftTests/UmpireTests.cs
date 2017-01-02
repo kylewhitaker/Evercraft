@@ -6,7 +6,7 @@ public class UmpireTests
 	Umpire _u;
 
 	[TestFixtureSetUp]
-	public void Setup()
+	public void TFSetup()
 	{
 		_u = new Umpire();
 	}

@@ -6,7 +6,7 @@ public class CharacterTests
 {
 	Character _c;
 
-	[TestFixtureSetUp]
+	[SetUp]
 	public void Setup()
 	{
 		_c = new Character();

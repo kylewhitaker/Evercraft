@@ -3,19 +3,31 @@ using NUnit.Framework;
 [TestFixture]
 public class ScorekeeperTests
 {
+	Scorekeeper _s;
+	Character _c;
+
+	[TestFixtureSetUp]
+	public void TFSetup()
+	{
+		_s = new Scorekeeper();
+	}
+
+	[SetUp]
+	public void Setup()
+	{
+		_c = new Character();
+	}
+
 	[TestCase(1)]
 	[TestCase(2)]
 	public void Damage(int pts)
 	{
 		// Arrange
-		Scorekeeper s = new Scorekeeper();
-		Character c = new Character();
-		int preDamage = 5;
-		c.HitPoints = preDamage;
+		int preDamage = _c.HitPoints;
 		// Act
-		s.Damage(character: c, points: pts);
+		_s.Damage(character: _c, points: pts);
 		// Assert
-		Assert.AreEqual(preDamage - pts, c.HitPoints);
+		Assert.AreEqual(preDamage - pts, _c.HitPoints);
 	}
 
 }
