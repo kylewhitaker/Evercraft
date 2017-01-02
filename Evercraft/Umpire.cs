@@ -1,12 +1,7 @@
-using System;
-
-namespace Evercraft
+public class Umpire
 {
-	public class Umpire
+	public bool AttackIsHit(int roll, int armorClass)
 	{
-		public bool AttackIsHit(int roll, int armorClass)
-		{
-			return roll >= armorClass;
-		}
+		return roll >= armorClass;
 	}
 }

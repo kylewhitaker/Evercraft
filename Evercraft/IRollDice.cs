@@ -1,9 +1,4 @@
-﻿using System;
-
-namespace Evercraft
+﻿public interface IRollDice
 {
-	public interface IRollDice
-	{
-		int Roll();
-	}
+	int Roll();
 }

@@ -1,12 +1,7 @@
-using System;
-
-namespace Evercraft
+public class Scorekeeper
 {
-	public class Scorekeeper
+	public void Damage(Character character, int points)
 	{
-		public void Damage(Character character, int points)
-		{
-			character.HitPoints -= points;
-		}
+		character.HitPoints -= points;
 	}
 }
