@@ -41,10 +41,9 @@ public class CharacterTests
 	[Test]
 	public void Attack_RollDie()
 	{
-		int n = 15;
 		var die = MockRepository.GenerateStub<IRollDice>();
-		die.Stub(x => x.Roll()).Return(n);
-		Assert.AreEqual(n, _c.Attack(die));
+		die.Stub(x => x.Roll()).Return(15);
+		Assert.AreEqual(15, _c.Attack(die));
 	}
 
 }
