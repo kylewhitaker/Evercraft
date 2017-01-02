@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterTests.cs" />
+    <Compile Include="UmpireTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

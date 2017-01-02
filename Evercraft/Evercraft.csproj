@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="IRollDice.cs" />
+    <Compile Include="Umpire.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
