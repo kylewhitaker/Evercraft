@@ -4,9 +4,16 @@ using NUnit.Framework;
 public class AbilitiesTests
 {
 	[Test]
-	public void Default()
+	public void DefaultCharisma()
 	{
 		Abilities a = new Abilities();
 		Assert.AreEqual(10, a.Charisma);
+	}
+
+	[Test]
+	public void DefaultDexterity()
+	{
+		Abilities a = new Abilities();
+		Assert.AreEqual(10, a.Dexterity);
 	}
 }

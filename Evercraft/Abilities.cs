@@ -10,5 +10,6 @@ public class Abilities
 	public Abilities()
 	{
 		Charisma = 10;
+		Dexterity = 10;
 	}
 }
