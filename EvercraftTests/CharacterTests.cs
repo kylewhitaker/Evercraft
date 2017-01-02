@@ -46,4 +46,11 @@ public class CharacterTests
 		Assert.AreEqual(15, _c.Attack(die));
 	}
 
+	[Test]
+	public void IsDead()
+	{
+		_c.HitPoints = 0;
+		Assert.IsTrue(_c.IsDead());
+	}
+
 }
