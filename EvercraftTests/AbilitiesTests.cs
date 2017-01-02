@@ -5,13 +5,13 @@ using NUnit.Framework;
 public class AbilitiesTests
 {
 
-	[TestCaseSource("DefaultAbilityScores")]
+	[TestCaseSource("AbilitiesDefaults")]
 	public void Default(int ability, int score)
 	{
 		Assert.AreEqual(ability, score);
 	}
 
-	static IEnumerable DefaultAbilityScores
+	static IEnumerable AbilitiesDefaults
 	{
 		get
 		{

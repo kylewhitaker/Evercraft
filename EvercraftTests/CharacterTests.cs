@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections;
+using NUnit.Framework;
 using Rhino.Mocks;
 
 [TestFixture]
@@ -6,36 +7,25 @@ public class CharacterTests
 {
 	Character _c;
 
-	[SetUp]
-	public void Setup()
+	[OneTimeSetUp]
+	public void OneTimeSetUp()
 	{
 		_c = new Character();
 	}
 
-	[Test]
-	public void GetSetName()
+	[TestCaseSource("CharacterDefaults")]
+	public void Default(int property, int score)
 	{
-		_c.Name = "Kyle";
-		Assert.AreEqual("Kyle", _c.Name);
+		Assert.AreEqual(property, score);
 	}
 
-	[Test]
-	public void GetSetAlignment()
+	static IEnumerable CharacterDefaults
 	{
-		_c.Alignment = Alignment.Good;
-		Assert.AreEqual(Alignment.Good, _c.Alignment);
-	}
-
-	[Test]
-	public void DefaultArmorClass()
-	{
-		Assert.AreEqual(10, _c.ArmorClass);
-	}
-
-	[Test]
-	public void DefaultHitPoints()
-	{
-		Assert.AreEqual(5, _c.HitPoints);
+		get
+		{
+			yield return new TestCaseData(new Character().ArmorClass, 10).SetName("ArmorClass");
+			yield return new TestCaseData(new Character().HitPoints, 5).SetName("HitPoints");
+		}
 	}
 
 	[Test]
