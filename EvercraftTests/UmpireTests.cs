@@ -14,12 +14,12 @@ namespace EvercraftTests
 			_u = new Umpire();
 		}
 
-		[TestCase(15,10)]
-		[TestCase(10,10)]
-		[TestCase(8,10)]
-		public void AttackIsHit(int r, int ac)
+		[TestCase(15,10, Result = true)]
+		[TestCase(10,10, Result = true)]
+		[TestCase( 8,10, Result = false)]
+		public bool AttackIsHit(int r, int ac)
 		{
-			Assert.AreEqual(r >= ac ? true : false, _u.AttackIsHit(roll: r, armorClass: ac));
+			return _u.AttackIsHit(roll: r, armorClass: ac);
 		}
 
 	}
