@@ -53,4 +53,11 @@ public class CharacterTests
 		Assert.IsTrue(_c.IsDead());
 	}
 
+	[Test]
+	public void IsNotDead()
+	{
+		_c.HitPoints = 1;
+		Assert.IsFalse(_c.IsDead());
+	}
+
 }
