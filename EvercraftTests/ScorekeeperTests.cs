@@ -6,30 +6,20 @@ namespace EvercraftTests
 	[TestFixture()]
 	public class ScorekeeperTests
 	{
-		[Test()]
-		public void Damage_OnePoint()
+		[TestCase(1)]
+		[TestCase(2)]
+		public void Damage(int pts)
 		{
 			// Arrange
 			Scorekeeper s = new Scorekeeper();
 			Character c = new Character();
-			int preDamage = c.HitPoints;
+			int preDamage = 5;
+			c.HitPoints = preDamage;
 			// Act
-			s.Damage(character: c, points: 1);
+			s.Damage(character: c, points: pts);
 			// Assert
-			Assert.AreEqual(preDamage - 1, c.HitPoints);
+			Assert.AreEqual(preDamage - pts, c.HitPoints);
 		}
 
-		[Test()]
-		public void Damage_TwoPoints()
-		{
-			// Arrange
-			Scorekeeper s = new Scorekeeper();
-			Character c = new Character();
-			int preDamage = c.HitPoints;
-			// Act
-			s.Damage(character: c, points: 2);
-			// Assert
-			Assert.AreEqual(preDamage - 2, c.HitPoints);
-		}
 	}
 }
