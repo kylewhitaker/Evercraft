@@ -46,25 +46,13 @@ public class CharacterTests
 		Assert.AreEqual(15, _c.Attack(die));
 	}
 
-	[Test]
-	public void IsDead()
+	[TestCase(1, ExpectedResult = false)]
+	[TestCase(0, ExpectedResult = true)]
+	[TestCase(-1, ExpectedResult = true)]
+	public bool IsDead(int hp)
 	{
-		_c.HitPoints = 0;
-		Assert.IsTrue(_c.IsDead());
-	}
-
-	[Test]
-	public void IsNotDead()
-	{
-		_c.HitPoints = 1;
-		Assert.IsFalse(_c.IsDead());
-	}
-
-	[Test]
-	public void IsDeadNegative()
-	{
-		_c.HitPoints = -1;
-		Assert.IsTrue(_c.IsDead());
+		_c.HitPoints = hp;
+		return _c.IsDead();
 	}
 
 }
