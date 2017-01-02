@@ -20,6 +20,7 @@ public class UmpireTests
 	}
 
 	[TestCase(20, ExpectedResult = true)]
+	[TestCase(19, ExpectedResult = false)]
 	public bool AttackIsCriticalHit(int roll)
 	{
 		return _u.AttackIsCriticalHit(roll);

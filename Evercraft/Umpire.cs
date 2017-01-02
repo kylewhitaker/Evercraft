@@ -9,6 +9,6 @@ public class Umpire
 
 	public bool AttackIsCriticalHit(int roll)
 	{
-		return true;
+		return roll == 20;
 	}
 }
