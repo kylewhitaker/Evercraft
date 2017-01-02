@@ -1,6 +1,24 @@
 public class Abilities
 {
-	public int Charisma { get; set; }
+	private const int MIN = 1;
+	private const int MAX = 20;
+
+	private int charisma;
+	public int Charisma
+	{
+		get
+		{
+			return charisma;
+		}
+		set
+		{
+			if (value < MIN) charisma = MIN;
+			else if (value > MAX) charisma = MAX;
+			else charisma = value;
+		}
+	}
+
+
 	public int Constitution { get; set; }
 	public int Dexterity { get; set; }
 	public int Intelligence { get; set; }

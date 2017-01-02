@@ -4,6 +4,8 @@ using NUnit.Framework;
 [TestFixture]
 public class AbilitiesTests
 {
+	const int MIN = 1;
+	const int MAX = 20;
 
 	[TestCaseSource("AbilitiesDefaults")]
 	public void Default(int ability, int score)
@@ -22,5 +24,15 @@ public class AbilitiesTests
 			yield return new TestCaseData(new Abilities().Strength, 10).SetName("Strength");
 			yield return new TestCaseData(new Abilities().Wisdom, 10).SetName("Wisdom");
 		}
+	}
+
+	[TestCase(0, ExpectedResult = MIN)]
+	[TestCase(5, ExpectedResult = 5)]
+	[TestCase(21, ExpectedResult = MAX)]
+	public int SetValueRange(int score)
+	{
+		Abilities ab = new Abilities();
+		ab.Charisma = score;
+		return ab.Charisma;
 	}
 }
