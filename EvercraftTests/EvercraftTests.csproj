@@ -37,6 +37,7 @@
     <Compile Include="CharacterTests.cs" />
     <Compile Include="UmpireTests.cs" />
     <Compile Include="ScorekeeperTests.cs" />
+    <Compile Include="AbilitiesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

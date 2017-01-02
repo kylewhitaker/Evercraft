@@ -34,6 +34,7 @@
     <Compile Include="IRollDice.cs" />
     <Compile Include="Umpire.cs" />
     <Compile Include="Scorekeeper.cs" />
+    <Compile Include="Abilities.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
