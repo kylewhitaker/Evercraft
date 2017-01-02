@@ -6,7 +6,7 @@ namespace Evercraft
 	{
 		public void Damage(Character character, int points)
 		{
-			character.HitPoints--;
+			character.HitPoints -= points;
 		}
 	}
 }
