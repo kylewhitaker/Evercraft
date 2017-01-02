@@ -20,7 +20,7 @@ public class Character
 
 	public bool IsDead()
 	{
-		return HitPoints == 0;
+		return HitPoints <= 0;
 	}
 }
 
