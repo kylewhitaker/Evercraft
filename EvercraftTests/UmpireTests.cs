@@ -19,4 +19,10 @@ public class UmpireTests
 		return _u.AttackIsHit(roll: r, armorClass: ac);
 	}
 
+	[TestCase(20, ExpectedResult = true)]
+	public bool AttackIsCriticalHit(int roll)
+	{
+		return _u.AttackIsCriticalHit(roll);
+	}
+
 }
