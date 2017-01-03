@@ -26,7 +26,7 @@ public class AbilitiesTests
 		}
 	}
 
-	[TestCaseSource("AbilitiesRangeValues1To20")]
+	[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
 	public int SetValue_Charisma(int score)
 	{
 		Abilities ab = new Abilities();
@@ -34,7 +34,7 @@ public class AbilitiesTests
 		return ab.Charisma;
 	}
 
-	[TestCaseSource("AbilitiesRangeValues1To20")]
+	[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
 	public int SetValue_Constitution(int score)
 	{
 		Abilities ab = new Abilities();
@@ -42,13 +42,28 @@ public class AbilitiesTests
 		return ab.Constitution;
 	}
 
+	[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
+	public int SetValue_Dexterity(int score)
+	{
+		Abilities ab = new Abilities();
+		ab.Dexterity = score;
+		return ab.Dexterity;
+	}
+
+}
+
+public class MyTestData
+{
+	private static readonly int MIN = Abilities.MIN;
+	private static readonly int MAX = Abilities.MAX;
+
 	public static IEnumerable AbilitiesRangeValues1To20
 	{
 		get
 		{
-			yield return new TestCaseData(0).SetName("OutsideRangeBelow").Returns(MIN);
+			yield return new TestCaseData(MIN - 1).SetName("BelowRangeMinimum").Returns(MIN);
 			yield return new TestCaseData(5).SetName("WithinRange").Returns(5);
-			yield return new TestCaseData(21).SetName("OutsideRangeAbove").Returns(MAX);
+			yield return new TestCaseData(MAX + 1).SetName("AboveRangeMaximum").Returns(MAX);
 		}
 	}
 }

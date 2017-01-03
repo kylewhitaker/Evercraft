@@ -1,7 +1,7 @@
 public class Abilities
 {
-	private const int MIN = 1;
-	private const int MAX = 20;
+	public static readonly int MIN = 1;
+	public static readonly int MAX = 20;
 
 	private int charisma;
 	public int Charisma
@@ -27,10 +27,10 @@ public class Abilities
 		}
 		set
 		{
-			constitution = value < MIN ? MIN : value > MAX ? MAX : value;
-			//if (value < MIN) constitution = MIN;
-			//else if (value > MAX) constitution = MAX;
-			//else constitution = value;
+			//constitution = value < MIN ? MIN : value > MAX ? MAX : value;
+			if (value < MIN) constitution = MIN;
+			else if (value > MAX) constitution = MAX;
+			else constitution = value;
 		}
 	}
 
