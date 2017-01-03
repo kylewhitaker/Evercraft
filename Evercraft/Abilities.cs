@@ -6,35 +6,24 @@ public class Abilities
 	private int charisma;
 	public int Charisma
 	{
-		get
-		{
-			return charisma;
-		}
-		set
-		{
-			if (value < MIN) charisma = MIN;
-			else if (value > MAX) charisma = MAX;
-			else charisma = value;
-		}
+		get { return charisma; }
+		set { charisma = value < MIN ? MIN : value > MAX ? MAX : value; }
 	}
 
 	private int constitution;
 	public int Constitution
 	{
-		get
-		{
-			return constitution;
-		}
-		set
-		{
-			//constitution = value < MIN ? MIN : value > MAX ? MAX : value;
-			if (value < MIN) constitution = MIN;
-			else if (value > MAX) constitution = MAX;
-			else constitution = value;
-		}
+		get { return constitution; }
+		set { constitution = value < MIN ? MIN : value > MAX ? MAX : value; }
 	}
 
-	public int Dexterity { get; set; }
+	private int dexterity;
+	public int Dexterity
+	{
+		get { return dexterity; }
+		set { dexterity = value < MIN ? MIN : value > MAX ? MAX : value; }
+	}
+
 	public int Intelligence { get; set; }
 	public int Strength { get; set; }
 	public int Wisdom { get; set; }

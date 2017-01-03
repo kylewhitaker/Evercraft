@@ -58,9 +58,9 @@ public class MyTestData
 	{
 		get
 		{
-			yield return new TestCaseData(MIN - 1).SetName("BelowRangeMinimum").Returns(MIN);
-			yield return new TestCaseData(5).SetName("WithinRange").Returns(5);
-			yield return new TestCaseData(MAX + 1).SetName("AboveRangeMaximum").Returns(MAX);
+			yield return new TestCaseData(MIN - 1).Returns(MIN);
+			yield return new TestCaseData(5).Returns(5);
+			yield return new TestCaseData(MAX + 1).Returns(MAX);
 		}
 	}
 }
