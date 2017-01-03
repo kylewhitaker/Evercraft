@@ -23,44 +23,48 @@ public class AbilitiesTests
 		}
 	}
 
-	[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
-	public int SetValue_Charisma(int score)
-	{
-		Abilities ab = new Abilities();
-		ab.Charisma = score;
-		return ab.Charisma;
-	}
+	//[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
+	//public int SetValue_Charisma(int score)
+	//{
+	//	Abilities ab = new Abilities();
+	//	ab.Charisma = score;
+	//	return ab.Charisma;
+	//}
 
-	[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
-	public int SetValue_Constitution(int score)
-	{
-		Abilities ab = new Abilities();
-		ab.Constitution = score;
-		return ab.Constitution;
-	}
+	//[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
+	//public int SetValue_Constitution(int score)
+	//{
+	//	Abilities ab = new Abilities();
+	//	ab.Constitution = score;
+	//	return ab.Constitution;
+	//}
 
-	[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
-	public int SetValue_Dexterity(int score)
-	{
-		Abilities ab = new Abilities();
-		ab.Dexterity = score;
-		return ab.Dexterity;
-	}
+	//[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
+	//public int SetValue_Dexterity(int score)
+	//{
+	//	Abilities ab = new Abilities();
+	//	ab.Dexterity = score;
+	//	return ab.Dexterity;
+	//}
 
-}
-
-public class MyTestData
-{
 	private static readonly int MIN = Abilities.MIN;
 	private static readonly int MAX = Abilities.MAX;
 
-	public static IEnumerable AbilitiesRangeValues1To20
+	[TestCaseSource("AbilityRangeValues")]
+	public void Ability_SetValue_WithinRange(int val)
+	{
+		Abilities ab = new Abilities();
+		ab.Charisma = val;
+		Assert.IsTrue(ab.Charisma >= MIN && ab.Charisma <= MAX);
+	}
+
+	private static IEnumerable AbilityRangeValues
 	{
 		get
 		{
-			yield return new TestCaseData(MIN - 1).Returns(MIN);
-			yield return new TestCaseData(5).Returns(5);
-			yield return new TestCaseData(MAX + 1).Returns(MAX);
+			yield return new TestCaseData(MIN - 1);
+			yield return new TestCaseData(MAX + 1);
 		}
 	}
+		
 }
