@@ -50,8 +50,8 @@ public class AbilitiesTests
 	}
 
 	[Test]
-	public void SetAbility_WithinRange([Values(1, 3, 12, 20)] int val,
-									   [ValueSource("AbilityProperties")] string name)
+	public void SetAbility_WithinRange([Values(1, 3, 12, 20)] int val, 
+	                                   [ValueSource("AbilityProperties")] string name)
 	{
 		Abilities ab = new Abilities();
 		var prop = typeof(Abilities).GetProperty(name);
