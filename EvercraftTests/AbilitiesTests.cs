@@ -4,9 +4,6 @@ using NUnit.Framework;
 [TestFixture]
 public class AbilitiesTests
 {
-	private const int MIN = 1;
-	private const int MAX = 20;
-
 	[TestCaseSource("AbilitiesDefaults")]
 	public void Default(int ability, int score)
 	{
