@@ -1,15 +1,11 @@
 using System.Collections;
+using System.Reflection;
 using NUnit.Framework;
 
 [TestFixture]
 public class AbilitiesTests
 {
-	[TestCaseSource("AbilitiesDefaults")]
-	public void Default(int ability, int score)
-	{
-		Assert.AreEqual(ability, score);
-	}
-
+	#region TEST: Set Ability Property Defaults
 	private static IEnumerable AbilitiesDefaults
 	{
 		get
@@ -23,48 +19,54 @@ public class AbilitiesTests
 		}
 	}
 
-	//[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
-	//public int SetValue_Charisma(int score)
-	//{
-	//	Abilities ab = new Abilities();
-	//	ab.Charisma = score;
-	//	return ab.Charisma;
-	//}
-
-	//[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
-	//public int SetValue_Constitution(int score)
-	//{
-	//	Abilities ab = new Abilities();
-	//	ab.Constitution = score;
-	//	return ab.Constitution;
-	//}
-
-	//[TestCaseSource(typeof(MyTestData), "AbilitiesRangeValues1To20")]
-	//public int SetValue_Dexterity(int score)
-	//{
-	//	Abilities ab = new Abilities();
-	//	ab.Dexterity = score;
-	//	return ab.Dexterity;
-	//}
-
-	private static readonly int MIN = Abilities.MIN;
-	private static readonly int MAX = Abilities.MAX;
-
-	[TestCaseSource("AbilityRangeValues")]
-	public void Ability_SetValue_WithinRange(int val)
+	[TestCaseSource("AbilitiesDefaults")]
+	public void Default(int ability, int score)
 	{
-		Abilities ab = new Abilities();
-		ab.Charisma = val;
-		Assert.IsTrue(ab.Charisma >= MIN && ab.Charisma <= MAX);
+		Assert.AreEqual(ability, score);
 	}
+	#endregion
 
-	private static IEnumerable AbilityRangeValues
+	#region TEST: Set Ability Property Values
+	private static IEnumerable AbilityProperties
 	{
 		get
 		{
-			yield return new TestCaseData(MIN - 1);
-			yield return new TestCaseData(MAX + 1);
+			yield return "Charisma";
+			yield return "Constitution";
+			yield return "Dexterity";
+			yield return "Intelligence";
+			yield return "Strength";
+			yield return "Wisdom";
 		}
 	}
-		
+
+	[Test]
+	public void SetAbility_BelowMin([ValueSource("AbilityProperties")] string name)
+	{
+		Abilities ab = new Abilities();
+		var prop = typeof(Abilities).GetProperty(name);
+		prop.SetValue(ab, Abilities.MIN - 1);
+		Assert.AreEqual(Abilities.MIN, (int)prop.GetValue(ab));
+	}
+
+	[Test]
+	public void SetAbility_WithinRange([Values(1, 3, 12, 20)] int val,
+									   [ValueSource("AbilityProperties")] string name)
+	{
+		Abilities ab = new Abilities();
+		var prop = typeof(Abilities).GetProperty(name);
+		prop.SetValue(ab, val);
+		Assert.AreEqual(val, (int)prop.GetValue(ab));
+	}
+
+	[Test]
+	public void SetAbility_AboveMax([ValueSource("AbilityProperties")] string name)
+	{
+		Abilities ab = new Abilities();
+		var prop = typeof(Abilities).GetProperty(name);
+		prop.SetValue(ab, Abilities.MAX + 1);
+		Assert.AreEqual(Abilities.MAX, (int)prop.GetValue(ab));
+	}
+	#endregion
+
 }
