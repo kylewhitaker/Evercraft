@@ -4,8 +4,8 @@ using NUnit.Framework;
 [TestFixture]
 public class AbilitiesTests
 {
-	const int MIN = 1;
-	const int MAX = 20;
+	private const int MIN = 1;
+	private const int MAX = 20;
 
 	[TestCaseSource("AbilitiesDefaults")]
 	public void Default(int ability, int score)
@@ -13,7 +13,7 @@ public class AbilitiesTests
 		Assert.AreEqual(ability, score);
 	}
 
-	static IEnumerable AbilitiesDefaults
+	private static IEnumerable AbilitiesDefaults
 	{
 		get
 		{
@@ -26,13 +26,29 @@ public class AbilitiesTests
 		}
 	}
 
-	[TestCase(0, ExpectedResult = MIN)]
-	[TestCase(5, ExpectedResult = 5)]
-	[TestCase(21, ExpectedResult = MAX)]
-	public int SetValueRange(int score)
+	[TestCaseSource("AbilitiesRangeValues1To20")]
+	public int SetValue_Charisma(int score)
 	{
 		Abilities ab = new Abilities();
 		ab.Charisma = score;
 		return ab.Charisma;
+	}
+
+	[TestCaseSource("AbilitiesRangeValues1To20")]
+	public int SetValue_Constitution(int score)
+	{
+		Abilities ab = new Abilities();
+		ab.Constitution = score;
+		return ab.Constitution;
+	}
+
+	public static IEnumerable AbilitiesRangeValues1To20
+	{
+		get
+		{
+			yield return new TestCaseData(0).SetName("OutsideRangeBelow").Returns(MIN);
+			yield return new TestCaseData(5).SetName("WithinRange").Returns(5);
+			yield return new TestCaseData(21).SetName("OutsideRangeAbove").Returns(MAX);
+		}
 	}
 }

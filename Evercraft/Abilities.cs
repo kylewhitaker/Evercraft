@@ -18,8 +18,22 @@ public class Abilities
 		}
 	}
 
+	private int constitution;
+	public int Constitution
+	{
+		get
+		{
+			return constitution;
+		}
+		set
+		{
+			constitution = value < MIN ? MIN : value > MAX ? MAX : value;
+			//if (value < MIN) constitution = MIN;
+			//else if (value > MAX) constitution = MAX;
+			//else constitution = value;
+		}
+	}
 
-	public int Constitution { get; set; }
 	public int Dexterity { get; set; }
 	public int Intelligence { get; set; }
 	public int Strength { get; set; }
