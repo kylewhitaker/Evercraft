@@ -2,8 +2,17 @@ using System.Collections;
 using NUnit.Framework;
 
 [TestFixture]
-public class AbilitiesTests_Defaults
+public class AbilitiesTests
 {
+	
+	Abilities _ab;
+	
+	[OneTimeSetUp]
+	public void OneTimeSetUp()
+	{
+		_ab = new Abilities();
+	}
+
 	private static IEnumerable AbilitiesDefaults
 	{
 		get
@@ -16,18 +25,6 @@ public class AbilitiesTests_Defaults
 			yield return new TestCaseData(new Abilities().Wisdom, 10).SetName("Wisdom");
 		}
 	}
-
-	[TestCaseSource("AbilitiesDefaults")]
-	public void Default(int ability, int score)
-	{
-		Assert.AreEqual(ability, score);
-	}
-}
-
-[TestFixture]
-public class AbilitiesTests_Properties
-{
-	Abilities _ab;
 
 	private static IEnumerable AbilityProperties
 	{
@@ -42,10 +39,10 @@ public class AbilitiesTests_Properties
 		}
 	}
 
-	[OneTimeSetUp]
-	public void OneTimeSetUp()
+	[TestCaseSource("AbilitiesDefaults")]
+	public void Default(int ability, int score)
 	{
-		_ab = new Abilities();
+		Assert.AreEqual(ability, score);
 	}
 
 	[Test]
@@ -56,9 +53,9 @@ public class AbilitiesTests_Properties
 		Assert.AreEqual(Abilities.MIN, (int)prop.GetValue(_ab));
 	}
 
-	[Test]
-	public void SetAbility_WithinRange([Range(1, 20)] int val,
-									   [ValueSource("AbilityProperties")] string name)
+	[Test, Combinatorial]
+	public void SetAbility_WithinRange([Range(1, 20)] int val, 
+	                                   [ValueSource("AbilityProperties")] string name)
 	{
 		var prop = typeof(Abilities).GetProperty(name);
 		prop.SetValue(_ab, val);
@@ -72,15 +69,12 @@ public class AbilitiesTests_Properties
 		prop.SetValue(_ab, Abilities.MAX + 1);
 		Assert.AreEqual(Abilities.MAX, (int)prop.GetValue(_ab));
 	}
-}
 
-[TestFixture]
-public class AbilitiesTests_Modifiers
-{
 	[Test, Sequential]
 	public void Modify([Range(1, 20)] int ability, 
 	                   [Values(-5,-4,-4,-3,-3,-2,-2,-1,-1,0,0,1,1,2,2,3,3,4,4,5)] int modifier)
 	{
 		Assert.AreEqual(modifier, new Abilities().Modify(ability));
 	}
+
 }
