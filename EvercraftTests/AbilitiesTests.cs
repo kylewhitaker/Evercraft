@@ -2,9 +2,8 @@ using System.Collections;
 using NUnit.Framework;
 
 [TestFixture]
-public class AbilitiesTests
+public class AbilitiesTests_Defaults
 {
-	#region TEST: Set Ability Property Defaults
 	private static IEnumerable AbilitiesDefaults
 	{
 		get
@@ -23,9 +22,13 @@ public class AbilitiesTests
 	{
 		Assert.AreEqual(ability, score);
 	}
-	#endregion
+}
 
-	#region TEST: Set Ability Property Values
+[TestFixture]
+public class AbilitiesTests_Properties
+{
+	Abilities _ab;
+
 	private static IEnumerable AbilityProperties
 	{
 		get
@@ -39,33 +42,34 @@ public class AbilitiesTests
 		}
 	}
 
+	[OneTimeSetUp]
+	public void OneTimeSetUp()
+	{
+		_ab = new Abilities();
+	}
+
 	[Test]
 	public void SetAbility_BelowMin([ValueSource("AbilityProperties")] string name)
 	{
-		Abilities ab = new Abilities();
 		var prop = typeof(Abilities).GetProperty(name);
-		prop.SetValue(ab, Abilities.MIN - 1);
-		Assert.AreEqual(Abilities.MIN, (int)prop.GetValue(ab));
+		prop.SetValue(_ab, Abilities.MIN - 1);
+		Assert.AreEqual(Abilities.MIN, (int)prop.GetValue(_ab));
 	}
 
 	[Test]
 	public void SetAbility_WithinRange([Values(1, 3, 12, 20)] int val, 
 	                                   [ValueSource("AbilityProperties")] string name)
 	{
-		Abilities ab = new Abilities();
 		var prop = typeof(Abilities).GetProperty(name);
-		prop.SetValue(ab, val);
-		Assert.AreEqual(val, (int)prop.GetValue(ab));
+		prop.SetValue(_ab, val);
+		Assert.AreEqual(val, (int)prop.GetValue(_ab));
 	}
 
 	[Test]
 	public void SetAbility_AboveMax([ValueSource("AbilityProperties")] string name)
 	{
-		Abilities ab = new Abilities();
 		var prop = typeof(Abilities).GetProperty(name);
-		prop.SetValue(ab, Abilities.MAX + 1);
-		Assert.AreEqual(Abilities.MAX, (int)prop.GetValue(ab));
+		prop.SetValue(_ab, Abilities.MAX + 1);
+		Assert.AreEqual(Abilities.MAX, (int)prop.GetValue(_ab));
 	}
-	#endregion
-
 }
