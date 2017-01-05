@@ -57,7 +57,7 @@ public class AbilitiesTests_Properties
 	}
 
 	[Test]
-	public void SetAbility_WithinRange([Values(1, 3, 12, 20)] int val,
+	public void SetAbility_WithinRange([Range(1, 20)] int val,
 									   [ValueSource("AbilityProperties")] string name)
 	{
 		var prop = typeof(Abilities).GetProperty(name);
@@ -78,7 +78,7 @@ public class AbilitiesTests_Properties
 public class AbilitiesTests_Modifiers
 {
 	[Test, Sequential]
-	public void Modify([Range(1,20)] int ability, 
+	public void Modify([Range(1, 20)] int ability, 
 	                   [Values(-5,-4,-4,-3,-3,-2,-2,-1,-1,0,0,1,1,2,2,3,3,4,4,5)] int modifier)
 	{
 		Assert.AreEqual(modifier, new Abilities().Modify(ability));
