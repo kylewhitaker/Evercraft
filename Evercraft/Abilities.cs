@@ -1,3 +1,5 @@
+using System;
+
 public class Abilities
 {
 	public static readonly int MIN = 1;
@@ -60,4 +62,11 @@ public class Abilities
 	{
 		return val < MIN ? MIN : val > MAX ? MAX : val;
 	}
+
+	public int Modify(int ability)
+	{
+		return (ability / 2) - 5;
+	}
 }
+
+
