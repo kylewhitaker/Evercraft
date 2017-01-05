@@ -6,9 +6,11 @@ public class Character
 	public Alignment Alignment { get; set; }
 	public int ArmorClass { get; set; }
 	public int HitPoints { get; set; }
+	public Abilities Abilities { get; set; }
 
 	public Character()
 	{
+		Abilities = new Abilities();
 		ArmorClass = 10;
 		HitPoints = 5;
 	}
