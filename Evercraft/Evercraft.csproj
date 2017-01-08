@@ -35,6 +35,7 @@
     <Compile Include="Umpire.cs" />
     <Compile Include="Scorekeeper.cs" />
     <Compile Include="Abilities.cs" />
+    <Compile Include="Modifier.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
