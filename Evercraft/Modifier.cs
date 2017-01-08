@@ -2,8 +2,15 @@
 
 public class Modifier
 {
-	public int AddStrengthToAttackRoll(int roll, int strength)
+	public int AddStrengthToRoll(int roll, int strength)
 	{
 		return roll + strength;
 	}
+
+	public int AddStrengthToDamage(int damage, int strength)
+	{
+		return damage + strength;
+	}
 }
+
+
