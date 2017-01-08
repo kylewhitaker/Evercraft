@@ -13,12 +13,6 @@ public class CharacterTests
 		_c = new Character();
 	}
 
-	[TestCaseSource("CharacterDefaults")]
-	public void Default(int property, int score)
-	{
-		Assert.AreEqual(property, score);
-	}
-
 	static IEnumerable CharacterDefaults
 	{
 		get
@@ -26,6 +20,12 @@ public class CharacterTests
 			yield return new TestCaseData(new Character().ArmorClass, 10).SetName("ArmorClass");
 			yield return new TestCaseData(new Character().HitPoints, 5).SetName("HitPoints");
 		}
+	}
+
+	[TestCaseSource("CharacterDefaults")]
+	public void Default(int property, int score)
+	{
+		Assert.AreEqual(property, score);
 	}
 
 	[Test]
@@ -43,6 +43,12 @@ public class CharacterTests
 	{
 		_c.HitPoints = hp;
 		return _c.IsDead();
+	}
+
+	[Test]
+	public void Abilities()
+	{
+		Assert.NotNull(_c.Abilities);
 	}
 
 }
