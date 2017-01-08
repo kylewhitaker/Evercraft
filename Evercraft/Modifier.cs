@@ -11,6 +11,14 @@ public class Modifier
 	{
 		return damage + strength;
 	}
+	public int Double(int strength)
+	{
+		return 2 * strength;
+	}
+
 }
+
+
+
 
 

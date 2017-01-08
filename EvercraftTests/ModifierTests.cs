@@ -15,4 +15,11 @@ public class ModifierTests
 		Modifier m = new Modifier();
 		Assert.AreEqual(damage + strength, m.AddStrengthToDamage(damage, strength));
 	}
+
+	[Test]
+	public void Double([Range(-5,5)] int strength)
+	{
+		Modifier m = new Modifier();
+		Assert.AreEqual(2 * strength, m.Double(strength));
+	}
 }
